@@ -27,6 +27,4 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
 	<import resource="classpath:spring/dubbo/dubbo-consumer.xml" />
-    
-    
 </beans>

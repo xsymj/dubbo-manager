@@ -33,6 +33,7 @@
 
 	<typeAliases>
 		<typeAlias alias="OrderEntity" type="cn.com.haomi.inteface.order.entity.OrderEntity" />
+		<typeAlias alias="PurchaseOrderEntity" type="cn.com.haomi.inteface.order.entity.PurchaseOrderEntity" />
 	</typeAliases>
 
 	<!-- 在在mappers定义之前 -->
@@ -50,6 +51,7 @@
 
 	<mappers>
 		<mapper resource="mappers/order/OrderMapper.xml" />
+		<mapper resource="mappers/order/PurchaseOrderMapper.xml"/>
 	</mappers>
 
 </configuration>
