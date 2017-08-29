@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.constraints.Null;
+
 import org.apache.ibatis.jdbc.SqlRunner;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -48,6 +50,7 @@ public abstract class BaseDaoImp<T extends BaseEntity> extends SqlSessionDaoSupp
 	public static final String SQL_DELETE_BY_ID = "deleteById";
 	public static final String SQL_LIST_PAGE = "listPage";
 	public static final String SQL_LIST_BY = "listBy";
+	public static final String SQL_LIST = "list";
 	public static final String SQL_COUNT_BY_PAGE_PARAM = "countByPageParam"; // 根据当前分页参数进行统计
 
 	
@@ -87,6 +90,7 @@ public abstract class BaseDaoImp<T extends BaseEntity> extends SqlSessionDaoSupp
 
 		return result;
 	}
+
 	
 	public long insert(List<T> list) {
 
