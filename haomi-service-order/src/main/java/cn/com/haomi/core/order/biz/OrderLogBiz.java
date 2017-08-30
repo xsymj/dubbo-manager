@@ -17,7 +17,7 @@ public class OrderLogBiz {
 				OrderSendLogEntity orderSendLogEntity = new OrderSendLogEntity();
 				 orderSendLogEntity.setId(orderLogDao.getSeqNextValue(Constant.ORDER_SEND_LOG));
 				 orderSendLogEntity.setOrder_id(orderId);
-			     orderSendLogEntity.setStatus(status);
+			     orderSendLogEntity.setStatus(status!=null?status.charAt(0):null);
 			     orderSendLogEntity.setOrder_status(order_status);
 			     orderSendLogEntity.setType(type);
 			     orderSendLogEntity.setCreate_id(uc_code);

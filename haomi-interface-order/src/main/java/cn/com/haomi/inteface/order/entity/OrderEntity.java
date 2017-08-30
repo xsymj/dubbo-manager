@@ -19,9 +19,9 @@ public class OrderEntity extends BaseEntity {
 	
 	private String op_code=null;
 	
-	private BigDecimal amount=null;
+	private BigDecimal amount=BigDecimal.ZERO;
 	
-	private Character order_from;
+	private Character order_from='0';
 	
 	/*
 	 * 订单状态 
@@ -32,17 +32,17 @@ public class OrderEntity extends BaseEntity {
 	 * 已签约：4
 	 * 已取消：9
 	 */
-	private Integer order_status;
+	private Integer order_status=0;
 	
 	private String order_type;
 	
 	private Character house_type;
 	
-	private BigDecimal house_area;
+	private BigDecimal house_area = BigDecimal.ZERO;
 	
 	private String house_age;
 	
-	private Character is_checked;
+	private Character is_checked = '0';
 	
 	private String order_time;
 	
@@ -56,19 +56,19 @@ public class OrderEntity extends BaseEntity {
 	private String actual_reservation_test_time;
 	
 	//报价状态
-	private Integer offer_status;
+	private Integer offer_status = 0;
 	
 	//选材状态
-	private Integer material_status;
+	private Integer material_status = 0;
 	
 	//上传施工图状态
 	private Integer up_constructionpic_status;
 
 	//增项标示
-	private Integer incre_status;
+	private Integer incre_status = 0;
 
 	//减项标示
-	private Integer decre_status;
+	private Integer decre_status = 0;
 
 	//预约交底时间
 	private String reservation_complete_time;
@@ -86,12 +86,12 @@ public class OrderEntity extends BaseEntity {
 	private Integer work_days;
 
 	//材料增项状态
-	private Integer incre_material_status;
+	private Integer incre_material_status = 0;
 
 	//材料减项状态
-	private Integer decre_material_status;
+	private Integer decre_material_status = 0;
 	
-	private Integer pic_status;
+	private Integer pic_status = 0;
 
 	//签约时间
 	private String signing_time;
@@ -117,6 +117,42 @@ public class OrderEntity extends BaseEntity {
 
 	//竣工时间
 	private String over_time;
+	
+	//优惠金额
+	private BigDecimal discount_amount = BigDecimal.ZERO;
+	
+	
+	private Integer incre_decre_material_status = 0;
+	
+	private String assigned_housekeeper_time;
+	
+	
+	
+	
+
+	public String getAssigned_housekeeper_time() {
+		return assigned_housekeeper_time;
+	}
+
+	public void setAssigned_housekeeper_time(String assigned_housekeeper_time) {
+		this.assigned_housekeeper_time = assigned_housekeeper_time;
+	}
+
+	public BigDecimal getDiscount_amount() {
+		return discount_amount;
+	}
+
+	public void setDiscount_amount(BigDecimal discount_amount) {
+		this.discount_amount = discount_amount;
+	}
+
+	public Integer getIncre_decre_material_status() {
+		return incre_decre_material_status;
+	}
+
+	public void setIncre_decre_material_status(Integer incre_decre_material_status) {
+		this.incre_decre_material_status = incre_decre_material_status;
+	}
 
 	public String getOrder_code() {
 		return order_code;

@@ -25,8 +25,8 @@ public class OrderDaoImp extends BaseDaoImp<OrderEntity> implements OrderDao{
 	/**
 	 * 获取订单code
 	 */
-	public String buildOrderNo() {
-		return "BJ"+DateUtils.toString(new Date(), "yyyyMMdd")+StringUtils.coverZero(super.getSeqNextValue(Constant.SCM_ORDER),SeqTypeEnum.SEQUENCE_ORDER.getValue());
+	public String buildOrderNo(Long order_id) {
+		return "BJ"+DateUtils.toString(new Date(), "yyyyMMdd")+StringUtils.coverZero(order_id,SeqTypeEnum.SEQUENCE_ORDER.getValue());
 	}
 	
 	

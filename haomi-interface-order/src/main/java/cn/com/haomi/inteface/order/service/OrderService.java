@@ -21,9 +21,9 @@ public interface OrderService{
 		 * 获取订单code
 		 * @return
 		 */
-		String buildOrderNo();
+		//String buildOrderNo();
 		
 		PageBean list(PageParam pageParam,Map<String, Object> paramMap);
 		
-		Long insertOrder(AddOrderModel addOrderModel);
+		void insertOrder(AddOrderModel addOrderModel);
 }

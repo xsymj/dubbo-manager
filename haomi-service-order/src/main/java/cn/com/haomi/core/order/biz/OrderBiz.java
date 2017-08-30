@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import cn.com.haomi.common.constant.Constant;
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
@@ -43,11 +45,12 @@ public class OrderBiz {
 	 * @param addOrderModel
 	 * @return
 	 */
+	@Transactional
 	public void insertOrder(AddOrderModel addOrderModel) {
 		OrderEntity orderEntity = new OrderEntity();
-		long order_id = orderDao.getSeqNextValue(Constant.SCM_ORDER);
+		long order_id = orderDao.getSeqNextValue(Constant.HAOMI_ORDER);
 		orderEntity.setId(order_id);
-		orderEntity.setOrder_code(orderDao.buildOrderNo());
+		orderEntity.setOrder_code(orderDao.buildOrderNo(order_id));
 		orderEntity.setOrder_from(addOrderModel.getOrder_from());
 		orderEntity.setUser_id(addOrderModel.getUc_code());
 		orderEntity.setProject_id(addOrderModel.getProject_id());

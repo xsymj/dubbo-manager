@@ -6,20 +6,13 @@
  *
  */
 package cn.com.haomi.service.order.serive.imp;
-
-
-
-import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.core.order.biz.OrderBiz;
 import cn.com.haomi.core.order.dao.OrderDao;
-import cn.com.haomi.inteface.order.entity.OrderEntity;
 import cn.com.haomi.inteface.order.model.AddOrderModel;
 import cn.com.haomi.inteface.order.service.OrderService;
 
@@ -33,9 +26,7 @@ public class OrderServiceImp implements OrderService{
 	private OrderBiz orderBiz;
 	
 	
-	public String buildOrderNo() {
-		return orderDao.buildOrderNo();
-	}
+	
 
 
 	
@@ -44,11 +35,9 @@ public class OrderServiceImp implements OrderService{
 	}
 
 
-
-	@Override
-	public Long insertOrder(AddOrderModel addOrderModel) {
-		
-		return null;
+	
+	public void insertOrder(AddOrderModel addOrderModel) {
+		 orderBiz.insertOrder(addOrderModel);
 	}
 
 

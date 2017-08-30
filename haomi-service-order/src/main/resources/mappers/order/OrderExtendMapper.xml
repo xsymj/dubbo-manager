@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.haomi.core.order.dao.imp.OrderExtendDaoImp">
+		
+		<sql id="table">haomi_order_extend</sql>
+		
+		
+		
+		
+		<insert id="insert"  parameterType="OrderExtendEntity" >
+				insert into 
+				<include refid="table" />
+				(id,order_id,customer_name,customer_phone,customer_id,city,area,address,agent_name,agent_code,agent_address,
+				agent_phone,remark,create_id,create_time,update_id,update_time,cancel_reason,province,original_price) 
+				values 
+				(#{id},#{order_id},#{customer_name},#{customer_phone},#{customer_id},#{city},#{area},#{address},#{agent_name},#{agent_code},#{agent_address},
+				#{agent_phone},#{remark},#{create_id},#{create_time},#{update_id},#{update_time},#{cancel_reason},#{province},#{original_price}) 
+		</insert>
+</mapper>

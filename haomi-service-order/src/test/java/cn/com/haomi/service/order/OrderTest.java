@@ -25,6 +25,7 @@ import com.alibaba.fastjson.JSONObject;
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
+import cn.com.haomi.inteface.order.model.AddOrderModel;
 import cn.com.haomi.inteface.order.model.OrderListModel;
 import cn.com.haomi.inteface.order.service.OrderService;
 
@@ -42,9 +43,10 @@ public class OrderTest{
 	public void main() {
 		
 		System.out.println("start AddressService test");
-	    PageBean pageBean = test();
+	   // PageBean pageBean = test();
+		   addOrder();
 		System.out.println("AddressService returnModel:");
-		System.out.print(JSONObject.toJSONString(pageBean));
+		//System.out.print(JSONObject.toJSONString(pageBean));
 		System.out.println("end AddressService test");
 	}	
 	
@@ -57,5 +59,31 @@ public class OrderTest{
 		PageBean pageBean = orderService.list(null, params);
 		System.out.println("OrderTest.test()");
 		return pageBean;
+	}
+	
+	public void addOrder() {
+		AddOrderModel addOrderModel = new AddOrderModel();
+		addOrderModel.setAmount("12.12");
+		addOrderModel.setOrder_from('0');
+		addOrderModel.setOrder_status(0);
+		addOrderModel.setOrder_address(1);
+		addOrderModel.setHouse_type('1');
+		addOrderModel.setHouse_area("99.99");
+		addOrderModel.setHouse_age("3");
+		addOrderModel.setIs_checked('1');
+		addOrderModel.setUc_code("1111");
+		addOrderModel.setOrder_time("2017-04-12 20:21:11");
+		addOrderModel.setCustomer_name("张三");
+		addOrderModel.setCustomer_phone("12388880002");
+		addOrderModel.setCity("北京市");
+		addOrderModel.setArea("asdasd");
+		addOrderModel.setAddress("123123");
+//		addOrderModel.setAgent_name("123123");
+//		addOrderModel.setAgent_code("123123");
+//		addOrderModel.setAgent_address("123123");
+//		addOrderModel.setAgent_phone("123123");
+		addOrderModel.setRemark("123123");
+		orderService.insertOrder(addOrderModel);
+		
 	}
 }

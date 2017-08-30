@@ -12,7 +12,7 @@ public class OrderSendLogEntity extends BaseEntity {
 		private String user_id;
 
 		/* 0:指派；1改派；2：接单  */
-		private String status;
+		private Character status='1';
 
 		/*订单状态 创建：-1 未分配：0；已分配/未接单：1；已接单：2；已检测：3 ;
 		已签约未付款：4；已签约已付款：5;已分派:6; 工长接单:7;  已交底:8;
@@ -55,11 +55,14 @@ public class OrderSendLogEntity extends BaseEntity {
 		this.user_id = user_id;
 	}
 
-	public String getStatus() {
+	public Character getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Character status) {
 		this.status = status;
-	}	
+	}
+	
+	
+	
 }

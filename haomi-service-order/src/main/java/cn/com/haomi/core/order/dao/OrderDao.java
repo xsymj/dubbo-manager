@@ -12,6 +12,6 @@ import cn.com.haomi.inteface.order.entity.OrderEntity;
 
 public interface OrderDao extends BaseDao<OrderEntity>{
 	
-		public String buildOrderNo();
+		public String buildOrderNo(Long order_id);
 		
 }

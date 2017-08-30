@@ -34,6 +34,8 @@
 	<typeAliases>
 		<typeAlias alias="OrderEntity" type="cn.com.haomi.inteface.order.entity.OrderEntity" />
 		<typeAlias alias="PurchaseOrderEntity" type="cn.com.haomi.inteface.order.entity.PurchaseOrderEntity" />
+		<typeAlias alias="OrderExtendEntity" type="cn.com.haomi.inteface.order.entity.OrderExtendEntity" />
+		<typeAlias alias="OrderLogEntity" type="cn.com.haomi.inteface.order.entity.OrderSendLogEntity" />
 	</typeAliases>
 
 	<!-- 在在mappers定义之前 -->
@@ -52,6 +54,8 @@
 	<mappers>
 		<mapper resource="mappers/order/OrderMapper.xml" />
 		<mapper resource="mappers/order/PurchaseOrderMapper.xml"/>
+		<mapper resource="mappers/order/OrderExtendMapper.xml"/>
+		<mapper resource="mappers/order/OrderLogMapper.xml"/>
 	</mappers>
 
 </configuration>

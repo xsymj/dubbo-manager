@@ -45,4 +45,23 @@
 				</where> 
 				<![CDATA[ order by ho.order_time desc  ]]>
 		</select>
+		
+		
+		<insert id="insert"  parameterType="OrderEntity" >
+				insert into 
+				<include refid="table" />
+				(id,order_code,amount,order_from,order_status,order_address,house_type,house_area,house_age,
+				is_checked,order_time,housekeeper_id,create_id,create_time,update_id,update_time,user_id,reservation_test_time,
+				offer_status,material_status,up_constructionpic_status,actual_reservation_test_time,incre_status,reservation_complete_time,
+				worker_id,start_work_time,work_days,incre_decre_material_status,pic_status,decre_status,project_id,signing_time,complete_time,
+				discount_amount,incre_material_status,decre_material_status,op_code,accept_order_time,assigned_worker_time,acceptance_time,
+				assigned_housekeeper_time,accept_succ_time,over_time,accept_user_id) 
+				values 
+				(#{id},#{order_code},#{amount},#{order_from},#{order_status},#{order_address},#{house_type},#{house_area},#{house_age},
+				#{is_checked},#{order_time},#{housekeeper_id},#{create_id},#{create_time},#{update_id},#{update_time},#{user_id},#{reservation_test_time},
+				#{offer_status},#{material_status},#{up_constructionpic_status},#{actual_reservation_test_time},#{incre_status},#{reservation_complete_time},
+				#{worker_id},#{start_work_time},#{work_days},#{incre_decre_material_status},#{pic_status},#{decre_status},#{project_id},#{signing_time},#{complete_time},
+				#{discount_amount},#{incre_material_status},#{decre_material_status},#{op_code},#{accept_order_time},#{assigned_worker_time},#{acceptance_time},
+				#{assigned_housekeeper_time},#{accept_succ_time},#{over_time},#{accept_user_id}) 
+		</insert>
 </mapper>
