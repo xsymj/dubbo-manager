@@ -49,12 +49,12 @@ public class OrderTest{
 	}	
 	
 	public PageBean test() {
-		PageParam pageParam = new PageParam(2, 10);
+		//PageParam pageParam = new PageParam(2, 10);
 		OrderListModel orderListModel = new OrderListModel();
 		orderListModel.setOrder_status(1);
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("orderListModel", orderListModel);
-		PageBean pageBean = orderService.list(pageParam, params);
+		PageBean pageBean = orderService.list(null, params);
 		System.out.println("OrderTest.test()");
 		return pageBean;
 	}

@@ -22,7 +22,8 @@
 			<if test="orderListModel.province != null and orderListModel.province != ''"> and hoe.province = #{orderListModel.province}</if>
 			<if test="orderListModel.city != null and orderListModel.city != ''"> and hoe.city = #{orderListModel.city}</if>
 			<if test="orderListModel.start_time != null and orderListModel.start_time != ''"> <![CDATA[ and ho.create_time>#{orderListModel.start_time}]]></if>
-			<if test="orderListModel.end_time != null and orderListModel.end_time != ''"> <![CDATA[ and ho.create_time<#{orderListModel.end_time}]]></if>
+			<if test="orderListModel.end_time != null and orderListModel.end_time != ''"> <![CDATA[ and ho.create_time<#{orderListModel.end_time}]]></if> 
+			<if test="orderListModel.uc_code != null and orderListModel.uc_code != ''"> and ho.user_id = #{orderListModel.uc_code}</if>
 		</sql>
 							
 		

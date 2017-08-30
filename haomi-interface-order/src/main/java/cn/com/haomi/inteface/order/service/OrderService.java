@@ -13,6 +13,7 @@ import java.util.Map;
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
+import cn.com.haomi.inteface.order.model.AddOrderModel;
 
 public interface OrderService{
 		
@@ -23,4 +24,6 @@ public interface OrderService{
 		String buildOrderNo();
 		
 		PageBean list(PageParam pageParam,Map<String, Object> paramMap);
+		
+		Long insertOrder(AddOrderModel addOrderModel);
 }

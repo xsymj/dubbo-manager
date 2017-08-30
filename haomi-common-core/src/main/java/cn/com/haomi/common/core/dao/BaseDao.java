@@ -9,10 +9,8 @@ package cn.com.haomi.common.core.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
-
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
 
@@ -30,6 +28,9 @@ public interface BaseDao<T>{
 	  */
 	long insert(T entity);
 	
+	long insert(T entity,String sqlid);
+	
+	
 	/**
 	 * 根据实体批量插入对象
 	 * @param list
@@ -37,11 +38,16 @@ public interface BaseDao<T>{
 	 */
 	long insert(List<T> list);
 	
+	
+	long insert(List<T> list,String sqlid);
+	
 	/**
 	 * 根据实体更新
 	 * @return
 	 */
 	long update(T entity);
+	
+	long update(T entity,String sqlid);
 	
 	/**
 	 * 根据id查找
@@ -103,7 +109,7 @@ public interface BaseDao<T>{
 	 * 
 	 * @return
 	 */
-	String getSeqNextValue(String seqName);
+	Long getSeqNextValue(String seqName);
 
 	SqlSessionTemplate getSessionTemplate();
 

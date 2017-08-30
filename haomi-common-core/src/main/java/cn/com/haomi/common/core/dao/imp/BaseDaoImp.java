@@ -29,6 +29,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import cn.com.haomi.common.core.dao.BaseDao;
 import cn.com.haomi.common.core.mybatis.interceptor.ExecutorInterceptor;
 import cn.com.haomi.common.entity.BaseEntity;
+import cn.com.haomi.common.entity.SaveEntity;
 import cn.com.haomi.common.exceptions.BizException;
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
@@ -210,7 +211,7 @@ public abstract class BaseDaoImp<T extends BaseEntity> extends SqlSessionDaoSupp
 	/**
 	 * 根据序列名称,获取序列值
 	 */
-	public String getSeqNextValue(String seqName) {
+	public Long getSeqNextValue(String seqName) {
 		boolean isClosedConn = false;
 		// 获取当前线程的连接
 		Connection connection = this.sessionTemplate.getConnection();
@@ -241,7 +242,7 @@ public abstract class BaseDaoImp<T extends BaseEntity> extends SqlSessionDaoSupp
 			// 执行SQL语句
 			Map<String, Object> params = sqlRunner.selectOne(sql, args);
 			for (Object o : params.values()) {
-				return o.toString();
+				return Long.parseLong(o.toString());
 			}
 			return null;
 		} catch (Exception e) {
@@ -252,7 +253,47 @@ public abstract class BaseDaoImp<T extends BaseEntity> extends SqlSessionDaoSupp
 			}
 		}
 	}
+	
+	public long update(T t,String sqlid) {
+		if (t == null)
+			throw new RuntimeException("T is null");
 
+		int result = sessionTemplate.update(getStatement(sqlid), t);
+
+		if (result <= 0)
+			throw BizException.DB_UPDATE_RESULT_0;
+
+		return result;
+	}
+	
+	public long insert(T t,String sqlid) {
+		if (t == null) {
+			throw new RuntimeException("T is null");
+		}
+		int result = sessionTemplate.insert(getStatement(sqlid), t);
+		if (result <= 0) {
+			throw BizException.DB_INSERT_RESULT_0;
+		}
+		
+		if (t != null && t.getId() != null && result > 0)
+			return t.getId();
+
+		return result;
+	}
+
+	
+	public long insert(List<T> list,String sqlid) {
+
+		if (list == null || list.size() <= 0)
+			return 0;
+
+		int result = sessionTemplate.insert(getStatement(sqlid), list);
+
+		if (result <= 0)
+			throw BizException.DB_INSERT_RESULT_0;
+
+		return result;
+	}
 	
 	
 	public String getStatement(String sqlId) {
