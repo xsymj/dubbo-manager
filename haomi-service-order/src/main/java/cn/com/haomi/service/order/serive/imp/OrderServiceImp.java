@@ -10,10 +10,13 @@ package cn.com.haomi.service.order.serive.imp;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import cn.com.haomi.common.page.PageBean;
+import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.core.order.biz.OrderBiz;
 import cn.com.haomi.core.order.dao.OrderDao;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
@@ -35,8 +38,8 @@ public class OrderServiceImp implements OrderService{
 
 
 	
-	public List<OrderEntity> list() {
-		return orderBiz.list();
+	public PageBean list(PageParam pageParam,Map<String, Object> paramMap) {
+		return orderBiz.list(pageParam,paramMap);
 	}
 	
 	

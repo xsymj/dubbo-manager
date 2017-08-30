@@ -13,6 +13,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import cn.com.haomi.common.page.PageBean;
+import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.core.order.dao.OrderDao;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
 
@@ -23,8 +25,7 @@ public class OrderBiz {
 	 private OrderDao orderDao;
 	
 	
-	public List<OrderEntity> list(){
-			Map<String, Object> map = new HashMap<String,Object>();
-			return  orderDao.listBy(map);
+	public PageBean list(PageParam pageParam,Map<String, Object> paramMap){
+			return  orderDao.listPage(pageParam, paramMap);
 	}
 }

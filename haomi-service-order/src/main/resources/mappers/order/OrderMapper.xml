@@ -4,18 +4,44 @@
 		
 		<sql id="table">haomi_order</sql>
 		
+		<sql id="orderListSql">
+				select ho.id id,sp4.id AS customer_id,sp4.realname AS customer_name,su4.uname AS customer_phone,ho.housekeeper_id housekeeper_id,ho.order_time, ho.order_from order_from,
+				hoe.address,ba.name AS provinceName,ho.order_status,ho.order_code,hoe.remark,hca.area_name order_address_name,ho.order_address order_address,ho.house_type,ho.house_area,
+				ho.house_age,ho.is_checked,hoe.agent_name,hoe.city,hoe.province,hoe.agent_code,hoe.agent_address,hoe.agent_phone,ho.reservation_test_time,
+				sp.realname housekeeper_name,hosl.update_time send_time,ho.actual_reservation_test_time,su3.uname AS worker_phone,sp3.realname AS worker_name,sp3.id AS worker_id,
+				DATE_FORMAT(ho.reservation_complete_time,'%Y.%m.%d %H:%i')AS reservation_complete_time,ho.start_work_time,ho.work_days,ho.`complete_time`,ho.acceptance_time,
+				ho.accept_succ_time,ho.over_time,hosl1.update_time AS accept_order_time,<![CDATA[case   when TIMESTAMPDIFF(MINUTE,hosl.update_time,now())<120 then date_format(timediff(now(),hosl.update_time),'%H:%i:%s') else null end expend_time]]>  
+		</sql>
+		
 		
 		<sql id="condition_sql">
-		<if test="id != null and id != ''"> and id = #{id}</if>
-		<if test="order_code != null and order_code != ''"> and order_code = #{order_code}</if>
-	</sql>
+			<if test="orderListModel.order_status != null and orderListModel.order_status != ''"> and ho.order_status = #{orderListModel.order_status}</if>
+			<if test="orderListModel.province != null and orderListModel.province != ''"> and hoe.province = #{orderListModel.province}</if>
+			<if test="orderListModel.city != null and orderListModel.city != ''"> and hoe.city = #{orderListModel.city}</if>
+			<if test="orderListModel.order_address != null and orderListModel.order_address != ''"> and ho.order_address = #{orderListModel.order_address}</if>
+			<if test="orderListModel.province != null and orderListModel.province != ''"> and hoe.province = #{orderListModel.province}</if>
+			<if test="orderListModel.city != null and orderListModel.city != ''"> and hoe.city = #{orderListModel.city}</if>
+			<if test="orderListModel.start_time != null and orderListModel.start_time != ''"> <![CDATA[ and ho.create_time>#{orderListModel.start_time}]]></if>
+			<if test="orderListModel.end_time != null and orderListModel.end_time != ''"> <![CDATA[ and ho.create_time<#{orderListModel.end_time}]]></if>
+		</sql>
+							
 		
-		
-		<select id="listBy" parameterType="java.util.Map"  resultType="cn.com.haomi.inteface.order.entity.OrderEntity">
-				select * from 
-				<include refid="table" />
+		<select id="listPage" parameterType="java.util.Map"  resultType="OrderEntity">
+				<include refid="orderListSql"></include> 
+				from haomi_order ho
+				left join haomi_order_extend hoe on ho.id=hoe.order_id
+				left join haomi_city_area hca ON hca.id=ho.order_address
+				left join base_area ba ON hoe.province = ba.id
+				LEFT JOIN sso_user su3 ON ho.worker_id = su3.id
+				LEFT JOIN sso_person sp3 ON su3.id = sp3.id
+				left join haomi_order_send_log hosl1  on ho.id=hosl1.order_id AND hosl1.order_status = 2
+				left join haomi_order_send_log hosl  on ho.id=hosl.order_id and hosl.order_status = 1  and
+				ho.housekeeper_id=hosl.user_id left join sso_person sp on sp.id=ho.housekeeper_id
+				LEFT JOIN sso_user su4 ON ho.user_id = su4.id
+				LEFT JOIN sso_person sp4 ON su4.id = sp4.id 
 				<where>
 					<include refid="condition_sql" />
-				</where>
+				</where> 
+				<![CDATA[ order by ho.order_time desc  ]]>
 		</select>
 </mapper>
