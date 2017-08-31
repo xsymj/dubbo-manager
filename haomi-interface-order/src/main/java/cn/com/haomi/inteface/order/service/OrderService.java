@@ -7,13 +7,10 @@
  */
 package cn.com.haomi.inteface.order.service;
 
-import java.util.List;
 import java.util.Map;
-
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
-import cn.com.haomi.inteface.order.entity.OrderEntity;
-import cn.com.haomi.inteface.order.model.AddOrderModel;
+import cn.com.haomi.inteface.order.model.AddOrUpdateOrderModel;
 
 public interface OrderService{
 		
@@ -25,5 +22,7 @@ public interface OrderService{
 		
 		PageBean list(PageParam pageParam,Map<String, Object> paramMap);
 		
-		void insertOrder(AddOrderModel addOrderModel);
+		void insertOrder(AddOrUpdateOrderModel addOrUpdateOrderModel);
+		
+		void updateOrder(AddOrUpdateOrderModel addOrUpdateOrderModel);
 }

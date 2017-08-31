@@ -11,7 +11,7 @@ import cn.com.haomi.common.utils.DateUtils;
 import cn.com.haomi.core.order.dao.OrderExtendDao;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
 import cn.com.haomi.inteface.order.entity.OrderExtendEntity;
-import cn.com.haomi.inteface.order.model.AddOrderModel;
+import cn.com.haomi.inteface.order.model.AddOrUpdateOrderModel;
 
 @Component("orderExtendBiz")
 public class OrderExtendBiz {
@@ -21,7 +21,7 @@ public class OrderExtendBiz {
 		
 		
 		
-		public Long insert(AddOrderModel addOrderModel,Long order_id) {
+		public Long insert(AddOrUpdateOrderModel addOrderModel,Long order_id) {
 			OrderExtendEntity orderExtendEntity = new OrderExtendEntity();
 			orderExtendEntity.setCustomer_name(addOrderModel.getCustomer_name());
 			orderExtendEntity.setCustomer_phone(addOrderModel.getCustomer_phone());

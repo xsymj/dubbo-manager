@@ -2,7 +2,7 @@ package cn.com.haomi.inteface.order.model;
 
 import cn.com.haomi.common.model.BaseModel;
 
-public class AddOrderModel extends BaseModel {
+public class AddOrUpdateOrderModel extends BaseModel {
 		
 	private String custom_id;
 

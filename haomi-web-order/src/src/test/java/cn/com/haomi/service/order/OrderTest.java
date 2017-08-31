@@ -48,7 +48,7 @@ public class OrderTest{
 	}	
 	
 	public void test() {
-		String a = orderService.buildOrderNo();
-		System.out.println("OrderTest.test()"+a);
+//		String a = orderService.buildOrderNo();
+//		System.out.println("OrderTest.test()"+a);
 	}
 }

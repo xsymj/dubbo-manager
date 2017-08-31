@@ -19,7 +19,7 @@ import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.common.utils.DateUtils;
 import cn.com.haomi.core.order.dao.OrderDao;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
-import cn.com.haomi.inteface.order.model.AddOrderModel;
+import cn.com.haomi.inteface.order.model.AddOrUpdateOrderModel;
 
 @Component("orderBiz")
 public class OrderBiz {
@@ -46,7 +46,7 @@ public class OrderBiz {
 	 * @return
 	 */
 	@Transactional
-	public void insertOrder(AddOrderModel addOrderModel) {
+	public void insertOrder(AddOrUpdateOrderModel addOrderModel) {
 		OrderEntity orderEntity = new OrderEntity();
 		long order_id = orderDao.getSeqNextValue(Constant.HAOMI_ORDER);
 		orderEntity.setId(order_id);
@@ -80,5 +80,8 @@ public class OrderBiz {
 	}
 	
 	
-
+	public void updateOrder(AddOrUpdateOrderModel addOrUpdateOrderModel) {
+		
+	}
+	
 }

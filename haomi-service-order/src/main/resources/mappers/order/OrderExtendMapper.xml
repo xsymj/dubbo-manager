@@ -16,4 +16,17 @@
 				(#{id},#{order_id},#{customer_name},#{customer_phone},#{customer_id},#{city},#{area},#{address},#{agent_name},#{agent_code},#{agent_address},
 				#{agent_phone},#{remark},#{create_id},#{create_time},#{update_id},#{update_time},#{cancel_reason},#{province},#{original_price}) 
 		</insert>
+		
+		<update id="update" parameterType="OrderExtendEntity">
+				update 
+				<include refid="table"/>
+				<set>
+						customer_name=#{customer_name},customer_phone=#{customer_phone},city=#{city},province=#{province},area=#{area},
+						address=#{address},agent_name=#{agent_name},agent_code=#{agent_code},agent_address=#{agent_address},
+						agent_phone=#{agent_phone},remark=#{remark},update_id=#{update_id},update_time=#{update_time},customer_id=#{customer_id} 
+				</set>
+				<where>
+						order_id=#{order_id}
+				</where>
+		</update>
 </mapper>

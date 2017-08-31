@@ -64,4 +64,16 @@
 				#{discount_amount},#{incre_material_status},#{decre_material_status},#{op_code},#{accept_order_time},#{assigned_worker_time},#{acceptance_time},
 				#{assigned_housekeeper_time},#{accept_succ_time},#{over_time},#{accept_user_id}) 
 		</insert>
+		
+		<update id="update" parameterType="OrderEntity" >
+				update 
+				<include refid="table "/>
+				<set>
+						order_from=#{order_from},order_status=#{order_status},order_address=#{order_address},house_type=#{house_type},house_area=#{house_area},
+						house_age=#{house_age},is_checked=#{is_checked},update_id=#{update_id},update_time=#{update_time},order_time=#{order_time},user_id=#{user_id} 
+				</set>
+				<where>
+						id=#{id} 
+				</where>
+		</update>
 </mapper>

@@ -25,7 +25,7 @@ import com.alibaba.fastjson.JSONObject;
 import cn.com.haomi.common.page.PageBean;
 import cn.com.haomi.common.page.PageParam;
 import cn.com.haomi.inteface.order.entity.OrderEntity;
-import cn.com.haomi.inteface.order.model.AddOrderModel;
+import cn.com.haomi.inteface.order.model.AddOrUpdateOrderModel;
 import cn.com.haomi.inteface.order.model.OrderListModel;
 import cn.com.haomi.inteface.order.service.OrderService;
 
@@ -62,7 +62,7 @@ public class OrderTest{
 	}
 	
 	public void addOrder() {
-		AddOrderModel addOrderModel = new AddOrderModel();
+		AddOrUpdateOrderModel addOrderModel = new AddOrUpdateOrderModel();
 		addOrderModel.setAmount("12.12");
 		addOrderModel.setOrder_from('0');
 		addOrderModel.setOrder_status(0);
